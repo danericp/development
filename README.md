@@ -1,6 +1,6 @@
-# Local Development Notes
+# Local Development
 
-| Technology | Notes |
+| Platform | Notes |
 | :--- | :--- |
 | AWS | Emulated AWS components are not at 100%  due to free features |
 | Docker | Docker **macvlan** network currently has a major limitation in Mac environment, hence not used.<br>Currently using Localstack as free. Features are limited. |
