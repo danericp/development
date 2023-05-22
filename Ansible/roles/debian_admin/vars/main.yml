@@ -1,0 +1,8 @@
+---
+# vars file for debian-admin
+node_exporter_version: 1.5.0
+
+download_url: https://download.oracle.com/java/20/latest/jdk-20_linux-aarch64_bin.tar.gz
+download_folder: /opt
+java_name: "{{download_folder}}/jdk-20_linux-aarch64_bin"
+java_archive: "{{download_folder}}/jdk-20_linux-aarch64_bin.tar.gz"
