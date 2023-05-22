@@ -1,0 +1,18 @@
+---
+- name: Debian
+  hosts: debian
+  tags: linux,debian
+  become: true
+  roles:
+    - debian_admin
+- name: Redhat
+  hosts: redhat
+  tags: linux,redhat
+  become: true
+  roles:
+    - redhat_admin
+- name: Windows
+  hosts: windows
+  tags: windows
+  roles:
+    - windows_admin
