@@ -29,4 +29,4 @@ Virtual Machine Image [Ubuntu Server ARM](https://ubuntu.com/download/server/arm
 
 Virtual Machine Image [Windows 11 Insider ARM](https://www.microsoft.com/en-us/software-download/windowsinsiderpreviewARM64)
 
-Virtual Machine Software [VMWare Fusion 13](https://store-us.vmware.com/fusion_buy_dual?utm_source=google&utm_medium=cpc&utm_term=engine:google%7Ccampaignid:13610504072%7Cadid:544114080438%7Cgclid:CjwKCAjwpayjBhAnEiwA-7enawDMDcfT6SLLbUITKgGOce2uiqAd_0RSh4-wj26B4Je6-X6bw3JWWBoC4BsQAvD_BwE&gad=1&gclid=CjwKCAjwpayjBhAnEiwA-7enawDMDcfT6SLLbUITKgGOce2uiqAd_0RSh4-wj26B4Je6-X6bw3JWWBoC4BsQAvD_BwE)
+Virtualization Software [VMWare Fusion 13](https://store-us.vmware.com/fusion_buy_dual?utm_source=google&utm_medium=cpc&utm_term=engine:google%7Ccampaignid:13610504072%7Cadid:544114080438%7Cgclid:CjwKCAjwpayjBhAnEiwA-7enawDMDcfT6SLLbUITKgGOce2uiqAd_0RSh4-wj26B4Je6-X6bw3JWWBoC4BsQAvD_BwE&gad=1&gclid=CjwKCAjwpayjBhAnEiwA-7enawDMDcfT6SLLbUITKgGOce2uiqAd_0RSh4-wj26B4Je6-X6bw3JWWBoC4BsQAvD_BwE)
