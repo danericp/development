@@ -1,0 +1,28 @@
+FROM kalilinux/kali-rolling
+
+RUN apt-get update && apt-get -y install \
+curl \
+grep \
+# inetutils-ping \
+# libpq-dev \
+# nmap \
+openssh-client openssh-server \
+# procps python3-distutils python3-pip python3-apt \
+sudo \
+tree \
+unzip \
+zip
+
+RUN useradd -rm -d /home/ansi -s /bin/bash ansi
+RUN echo 'ansi:ansi' | chpasswd
+
+RUN mkdir /home/ansi/.ssh && chmod 700 /home/ansi/.ssh
+COPY ./centos-ansible/id_rsa.pub /home/ansi/.ssh/authorized_keys
+RUN chown ansi:ansi -R /home/ansi/.ssh && \
+chmod 700 /home/ansi/.ssh/authorized_keys
+
+RUN service ssh start
+
+EXPOSE 22
+
+CMD ["/usr/sbin/sshd","-D"]
