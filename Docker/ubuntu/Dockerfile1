@@ -1,0 +1,34 @@
+FROM ubuntu:latest
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && \
+apt-get -y install default-jre-headless default-jdk default-jre software-properties-common
+
+RUN http_proxy="" && \
+apt-get install software-properties-common && \
+add-apt-repository ppa:deadsnakes/ppa && \
+apt-get update && \
+apt-get install -y python3.8
+
+RUN apt-get install -y \
+curl \
+grep \
+inetutils-ping \
+libpq-dev \
+nmap \
+openssh-client openssh-server \
+procps python3-distutils python3-pip python3-apt \
+sudo \
+tree \
+unzip \
+zip
+# RUN apt-get clean && \
+# rm -rf /var/lib/apt/lists/*
+
+WORKDIR /
+COPY ./ubuntu/python-requirements.txt /tmp/python-requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r /tmp/python-requirements.txt; rm /tmp/python-requirements.txt
+
+CMD /bin/bash
