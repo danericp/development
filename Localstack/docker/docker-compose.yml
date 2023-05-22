@@ -29,22 +29,5 @@ services:
       - "${TMPDIR:-./tmp/localstack}:/tmp/localstack"
       - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
       - "/Users/eric/.docker/run/docker.sock:/var/run/docker.sock"
-  ubuntu:
-    command: tail -f /dev/null
-    container_name: docker-ubuntu
-    restart: unless-stopped
-    working_dir: /var/lib/ubuntu
-    build:
-      context: .
-      dockerfile: ./ubuntu/Dockerfile
-    networks:
-      - bridge
-    ports:
-      - 22:22
-    volumes:
-      - type: bind
-        source: ./ubuntu/mount
-        target: /var/lib/ubuntu/mount
-        read_only: false
 networks:
   bridge:
