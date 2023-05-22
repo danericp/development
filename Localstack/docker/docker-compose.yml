@@ -1,0 +1,50 @@
+version: "3.8"
+services:
+  localstack-pro:
+    build:
+      context: .
+      dockerfile: ./localstack-pro/Dockerfile
+    container_name: "localstack-pro"
+    ports:
+      - "127.0.0.1:4566:4566"            # LocalStack Gateway
+      - "127.0.0.1:4510-4559:4510-4559"  # external services port range
+      # - "127.0.0.1:53:53"                # DNS config (required for Pro)
+      # - "127.0.0.1:53:53/udp"            # DNS config (required for Pro)
+      # - "127.0.0.1:443:443"              # LocalStack HTTPS Gateway (required for Pro)
+    environment:
+      - ACTIVATE_PRO=0
+      - AWS_ACCESS_KEY_ID='default'
+      - AWS_SECRET_KEY='default'
+      - AWS_BUCKET_NAME='s3-localstack'
+      - AWS_REGION='us-east-1'
+      - AWS_S3_ENDPOINT='localhost:4572'
+      - DATA_DIR=/tmp/localstack/data
+      - DEBUG=1 # ${DEBUG-}
+      - DOCKER_HOST=unix:///Users/eric/.docker/run/docker.sock
+      - LAMBDA_EXECUTOR=docker
+      - LOCALSTACK_API_KEY=${LOCALSTACK_API_KEY-}  # required for Pro
+      - PERSISTENCE=${PERSISTENCE-}
+      - SERVICES=serverless,cognito,rds,sqs,sns,cloudformation
+    volumes:
+      - "${TMPDIR:-./tmp/localstack}:/tmp/localstack"
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/Users/eric/.docker/run/docker.sock:/var/run/docker.sock"
+  ubuntu:
+    command: tail -f /dev/null
+    container_name: docker-ubuntu
+    restart: unless-stopped
+    working_dir: /var/lib/ubuntu
+    build:
+      context: .
+      dockerfile: ./ubuntu/Dockerfile
+    networks:
+      - bridge
+    ports:
+      - 22:22
+    volumes:
+      - type: bind
+        source: ./ubuntu/mount
+        target: /var/lib/ubuntu/mount
+        read_only: false
+networks:
+  bridge:
