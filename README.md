@@ -12,9 +12,9 @@
 
 | Platform | Added Features |
 | :--- | ---: |
-| CentOS Stream 9 | Jenkins agent compatible<br>Node Exporter installed<br>SFTP|SSH |
-| Ubuntu Server 22.03.4 | Jenkins agent compatible<br>Node Exporter installed<br>SFTP|SSH |
-| Ansible - Windows | SFTP|SSH (Powershell) |
+| CentOS Stream 9 | Jenkins agent compatible<br>Node Exporter installed<br>SFTP, SSH |
+| Ubuntu Server 22.03.4 | Jenkins agent compatible<br>Node Exporter installed<br>SFTP, SSH |
+| Ansible - Windows | SFTP, SSH (Powershell) |
 
 # Project Infrastructure
 
