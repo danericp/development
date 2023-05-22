@@ -8,6 +8,14 @@
 | Jenkins | Pipeline scripts on-going |
 | VMWare | No free IaaC solutions found yet |
 
+# Features
+
+| Platform | Added Features |
+| :--- | ---: |
+| CentOS Stream 9 | Jenkins agent compatible<br>Node Exporter installed<br>SFTP|SSH |
+| Ubuntu Server 22.03.4 | Jenkins agent compatible<br>Node Exporter installed<br>SFTP|SSH |
+| Ansible - Windows | SFTP|SSH (Powershell) |
+
 # Project Infrastructure
 
 ![logo](infrastructure.png)
@@ -20,9 +28,13 @@
 
 # References
 
+Database [PostgreSQL](https://www.postgresql.org/download/)
+
 Diagrams [Draw.io](https://app.diagrams.net)
 
 Emulate AWS [Localstack](https://localstack.cloud)
+
+Open-source Dashboards [Grafana Dashboards](https://grafana.com/grafana/dashboards/)
 
 Virtual Machine Image [CentOS Stream](https://www.centos.org/centos-stream/)
 
