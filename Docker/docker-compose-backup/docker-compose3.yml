@@ -1,0 +1,127 @@
+services:
+  postgres:
+    container_name: docker-postgres
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./postgresql/Dockerfile_posgresql/Dockerfile_posgresql
+    environment:
+      - POSTGRES_USER=eric
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=postgres
+    networks:
+      - customnet
+    ports:
+      - 8080:5432
+    volumes:
+      - type: bind
+        source: ./postgresql/mount
+        target: /var/lib/pgadmin/mount
+        read_only: false
+  pgadmin:
+    container_name: docker-pgadmin
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: ./postgresql/Dockerfile_pgadmin/Dockerfile_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: daneric.pelayo@zohomail.in
+      PGADMIN_DEFAULT_PASSWORD: 1234
+    depends_on:
+      - postgres
+    networks:
+      - customnet
+    ports:
+      - 443:443
+      - 8081:80 # browser
+    volumes:
+      - type: bind
+        source: ./postgresql/mount
+        target: /var/lib/pgadmin/mount
+        read_only: false
+  jenkins:
+    container_name: docker-jenkins
+    privileged: true
+    restart: unless-stopped
+    user: root
+    working_dir: /work
+    build:
+      context: .
+      dockerfile: ./jenkins/Dockerfile
+    networks:
+      - customnet
+    ports:
+      - 8082:8080
+      - 50000:50000
+    volumes:
+      - type: bind
+        source: ./jenkins/mount
+        target: /var/lib/jenkins/mount
+        read_only: false
+  centos-ansible:
+    container_name: docker-centos-ansible
+    # command: tail -f /dev/null
+    privileged: true
+    restart: unless-stopped
+    build:
+      context: ./centos-ansible
+      dockerfile: ./Dockerfile-master
+    networks:
+      - customnet
+    volumes:
+      - type: bind
+        source: ./centos-ansible/mount-master
+        target: /var/lib/ansible-master/mount
+        read_only: false
+  kali-linux:
+    # command: tail -f /dev/null
+    container_name: docker-kali-linux
+    restart: unless-stopped
+    working_dir: /var/lib/kali-linux
+    build:
+      context: .
+      dockerfile: ./kali-linux/Dockerfile
+    networks:
+      - customnet
+    ports:
+      - 58897:22
+    volumes:
+      - type: bind
+        source: ./kali-linux/mount
+        target: /var/lib/kali/mount
+        read_only: false
+  ubuntu:
+    # command: tail -f /dev/null
+    container_name: docker-ubuntu
+    restart: unless-stopped
+    working_dir: /var/lib/ubuntu
+    build:
+      context: .
+      dockerfile: ./ubuntu/Dockerfile
+    networks:
+      - customnet
+    ports:
+      - 58898:22
+    volumes:
+      - type: bind
+        source: ./ubuntu/mount
+        target: /var/lib/ubuntu/mount
+        read_only: false
+  server:
+    container_name: docker-nginx
+    restart: always
+    command: nginx-debug -g 'daemon off;'
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+    depends_on: 
+      - jenkins
+    networks:
+      - customnet
+    ports:
+      - 8000:80
+    volumes:
+      - ./nginx/conf.d/nginx.conf:/etc/nginx/nginx.conf # your nginx config file
+      - ./nginx/mount/log:/var/log/nginx # log files
+networks:
+  customnet:

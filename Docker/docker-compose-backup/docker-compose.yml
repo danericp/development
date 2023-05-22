@@ -1,0 +1,119 @@
+version: '3.8'
+services:
+  # azure-powershell:
+  #   container_name: azure-powershell
+  #   command: tail -f /dev/null
+  #   image: mcr.microsoft.com/azure-powershell
+  #   restart: unless-stopped
+  #   volumes:
+  #     - azure-powershell-data:/var/lib/azure-powershell
+  # dns:
+  #   build:
+  #     context: .
+  #     dockerfile: ./alpine/Dockerfile
+  #   restart: always
+  #   ports:
+  #     - 53:53
+  #     - 53:53/udp
+  #   volumes:
+  #     - ./alpine/conf/named.conf:/etc/bind/named.conf
+  #     - ./alpine/zone/:/etc/bind/zone/
+  #   command: named -c /etc/bind/named.conf -g -u named
+  # oracle:
+  #   container_name: oracle
+  #   image: container-registry.oracle.com/database/express:21.3.0-xe
+  #   restart: unless-stopped
+  #   ports:
+  #     - 8082:1521
+  #     - 8083:5500
+  #   volumes:
+  #     - oracle-data:/opt/oracle/oradata
+  # jenkins:
+  #   container_name: jenkins
+  #   image: jenkins/jenkins:latest
+  #   restart: unless-stopped
+  #   ports:
+  #     - 8081:8080
+  #     - 50000:50000
+  #   volumes:
+  #     - jenkins-data:/var/lib/jenkins
+  # nginx:
+  #   build:
+  #     context: .
+  #     dockerfile: ./nginx/Dockerfile
+  #   container_name: web-server
+  #   # image: nginx:latest
+  #   ports:
+  #     - 8085:80
+  #   volumes:
+  #     - ./nginx/html/:/usr/share/nginx/html/
+  #     - ./nfinx/conf.d/:/etc/nginx/conf.d/
+  # pgadmin:
+  #   container_name: pgadmin
+  #   image: dpage/pgadmin4
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - postgres
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: daneric.pelayo@zohomail.in
+  #     PGADMIN_DEFAULT_PASSWORD: 1234
+  #   ports:
+  #     - 8080:80
+  #   volumes:
+  #     - pgadmin4-data:/var/lib/pgadmin
+  # postgres:
+  #   image: postgres:14.2
+  #   container_name: postgres
+  #   restart: unless-stopped
+  #   ports:
+  #     - 5435:5432
+  #   command: ["postgres", "-c", "log_statement=all", "-c", "log_destination=stderr"]
+  #   environment:
+  #     - POSTGRES_USER=eric
+  #     - POSTGRES_PASSWORD=1234
+  #     - POSTGRES_DB=postgres
+  #   volumes:
+  #     - postgres-data:/var/lib/postgresql/data
+  centos:
+    build:
+      context: .
+      dockerfile: ./centos/Dockerfile
+    container_name: centos
+    command: tail -f /dev/null
+    # image: centos:latest
+    restart: unless-stopped
+    volumes:
+      - centos-data:/var/lib/centos
+    working_dir: /var/lib/centos
+  kali-linux:
+    build:
+      context: .
+      dockerfile: ./kali-linux/Dockerfile
+    container_name: kali-linux
+    command: tail -f /dev/null
+    # image: kalilinux/kali-rolling
+    restart: unless-stopped
+    volumes:
+      - kali-linux-data:/var/lib/kali-linux
+    working_dir: /var/lib/kali-linux
+  ubuntu:
+    build:
+      context: .
+      dockerfile: ./ubuntu/Dockerfile
+    command: tail -f /dev/null
+    container_name: ubuntu
+    # image: ubuntu:latest
+    restart: unless-stopped
+    volumes:
+      - ./ubuntu/mount:/var/lib/ubuntu/mount
+      - ubuntu-data:/var/lib/ubuntu
+    working_dir: /var/lib/ubuntu
+volumes:
+  # azure-powershell-data:
+  centos-data:
+  # jenkins-data:
+  kali-linux-data:
+  # oracle-data:
+  # postgres-data:
+  # pgadmin4-data:
+  ubuntu-data:

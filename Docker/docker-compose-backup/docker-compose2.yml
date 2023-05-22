@@ -1,0 +1,86 @@
+# version: '3.8'
+services:
+  # ansible-client:
+  #   build:
+  #     context: ./centos-ansible
+  #     dockerfile: ./Dockerfile-client
+  #   container_name: ansible-client
+  #   command: tail -f /dev/null
+  #   privileged: true
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./centos-ansible/mount-client:/var/lib/ansible-client/mount
+  #     - ansible-client-data:/var/lib/ansible-client
+  # ansible-master:
+  #   build:
+  #     context: ./centos-ansible
+  #     dockerfile: ./Dockerfile-master
+  #   container_name: ansible-master
+  #   command: tail -f /dev/null
+  #   privileged: true
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./centos-ansible/mount-master:/var/lib/ansible-master/mount
+  #     - ansible-master-data:/var/lib/ansible-master
+  # centos:
+  #   build:
+  #     context: .
+  #     dockerfile: ./centos/Dockerfile
+  #   container_name: centos
+  #   command: tail -f /dev/null
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./centos/mount:/var/lib/centos/mount
+  #     - centos-data:/var/lib/centos
+  #   working_dir: /var/lib/centos
+  jenkins:
+    build:
+      context: .
+      dockerfile: ./jenkins/Dockerfile
+    command: tail -f /dev/null
+    container_name: jenkins
+    # restart: unless-stopped
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - type: bind
+        source: ./jenkins/mount
+        target: /var/lib/jenkins/mount
+        read_only: false
+      # - jenkins-data:/var/lib/jenkins
+  # kali-linux:
+  #   build:
+  #     context: .
+  #     dockerfile: ./kali-linux/Dockerfile
+  #   container_name: kali-linux
+  #   command: tail -f /dev/null
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./kali-linux/mount:/var/lib/kali/mount
+  #     - kali-linux-data:/var/lib/kali-linux
+  #   working_dir: /var/lib/kali-linux
+  # ubuntu:
+  #   build:
+  #     context: .
+  #     dockerfile: ./ubuntu/Dockerfile
+  #   command: tail -f /dev/null
+  #   container_name: ubuntu
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./ubuntu/mount:/var/lib/ubuntu/mount
+  #     - ubuntu-data:/var/lib/ubuntu
+  #   working_dir: /var/lib/ubuntu
+# volumes:
+#   ansible-client-data:
+#     driver: local
+#   ansible-master-data:
+#     driver: local
+#   centos-data:
+#     driver: local
+#   jenkins-data:
+#     driver: local
+#   kali-linux-data:
+#     driver: local
+#   ubuntu-data:
+#     driver: local
