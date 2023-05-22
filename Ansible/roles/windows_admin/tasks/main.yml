@@ -1,0 +1,48 @@
+---
+# Ansible Guide https://docs.ansible.com/ansible/latest/collections/chocolatey/chocolatey/win_chocolatey_module.html
+# Chocolatey Packages https://community.chocolatey.org/packages
+- name: "Ensure Chocolatey itself is installed, using community repo for the bootstrap"
+  tags: windows,chocolatey,init
+  chocolatey.chocolatey.win_chocolatey:
+    name: chocolatey
+  when: ansible_facts['os_family'] == "Windows"
+- name: "Upgrade Chocolatey Package (Version {{ app_choco_version }})"
+  tags: windows,chocolatey,init,all
+  chocolatey.chocolatey.win_chocolatey:
+    name: all
+    state: "{{ app_choco_version }}"
+  when: ansible_facts['os_family'] == "Windows"
+- name: Install multiple Chocolatey packages sequentially
+  tags: windows,chocolatey,install
+  chocolatey.chocolatey.win_chocolatey:
+    name: '{{ item }}'
+    state: present
+  loop:
+    - "{{ app_choco_7zip }}"
+    - "{{ app_choco_cheatengine }}"
+    - "{{ app_choco_java }}"
+    - "{{ app_choco_jdk8 }}"
+    - "{{ app_choco_notepadplusplus }}"
+    - "{{ app_choco_prometheuswinexporter }}"
+    - "{{ app_choco_python39 }}"
+  when: ansible_facts['os_family'] == "Windows"
+- name: Uninstall multiple Chocolatey packages sequentially
+  tags: windows,chocolatey,uninstall
+  chocolatey.chocolatey.win_chocolatey:
+    name: '{{ item }}'
+    state: absent
+  loop:
+    - "{{ app_choco_python39 }}"
+  when: ansible_facts['os_family'] == "Windows"
+- name: Create C:\temp
+  tags: windows,directory,create
+  ansible.windows.win_file:
+    path: C:\temp
+    state: directory
+  when: ansible_facts['os_family'] == "Windows"
+- name: Download the 7-Zip package
+  tags: windows,wget,url,download
+  ansible.windows.win_get_url:
+    url: "{{ app_7zip }}"
+    dest: C:\temp\7z.msi
+  when: ansible_facts['os_family'] == "Windows"

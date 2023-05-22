@@ -1,0 +1,36 @@
+---
+# Setup Node exporter https://www.theairtips.com/post/how-to-install-node-exporter-on-centos-7-linux-monitoring
+- name: Node Exporter - Download
+  get_url:
+    url: https://github.com/prometheus/node_exporter/releases/download/v{{ node_exporter_version }}/node_exporter-{{ node_exporter_version }}.linux-arm64.tar.gz
+    dest: /tmp
+- name: Node Exporter - Download+Unarchive
+  unarchive:
+    remote_src: yes
+    src: /tmp/node_exporter-{{ node_exporter_version }}.linux-arm64.tar.gz
+    dest: /tmp
+- name: Node Exporter - Download+Unarchive+Move
+  copy:
+    src: /tmp/node_exporter-{{ node_exporter_version }}.linux-arm64/node_exporter
+    dest: /usr/local/bin/node_exporter
+    remote_src: yes
+    owner: eric
+    group: eric
+    mode: 0755
+- name: install unit file to systemd
+  template:
+    src: node_exporter.service.j2
+    dest: /etc/systemd/system/node_exporter.service
+    owner: eric
+    group: eric
+    mode: 0600
+- name: configure systemd to use service
+  systemd:
+    daemon_reload: yes
+    enabled: yes
+    state: started
+    name: node_exporter.service
+- name: reload service firewalld
+  systemd:
+    name: firewalld
+    state: reloaded

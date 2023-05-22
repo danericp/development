@@ -1,0 +1,59 @@
+---
+# Ansible Module yum https://docs.ansible.com/ansible/2.9/modules/yum_module.html#yum-module
+- name: "RUN - yum clean all"
+  tags: linux,redhat,centos,yum,clean
+  become: true
+  ansible.builtin.command: yum clean all
+  register: redhat_admin_myoutput
+  changed_when: redhat_admin_myoutput.rc != 0
+  failed_when: redhat_admin_myoutput.rc != 0
+- name: "RUN - yum makecache"
+  tags: linux,redhat,centos,yum,makecache
+  become: true
+  ansible.builtin.command: yum makecache
+  register: redhat_admin_myoutput
+  changed_when: redhat_admin_myoutput.rc != 0
+  failed_when: redhat_admin_myoutput.rc != 0
+- name: "RUN - yum update -y"
+  tags: linux,redhat,centos,yum,update
+  ansible.builtin.command: yum update -y
+  become: true
+  register: redhat_admin_myoutput
+  changed_when: redhat_admin_myoutput.rc != 0
+  failed_when: redhat_admin_myoutput.rc != 0
+- name: "Install the 'Development tools' package group"
+  tags: linux,redhat,centos,yum,devtools
+  ansible.builtin.yum:
+    name: "@Development tools"
+    state: present
+- name: "Install multiple yum packages sequentially"
+  tags: linux,redhat,centos,yum,install
+  ansible.builtin.yum:
+    name: '{{ item }}'
+    state: present
+  loop:
+    - curl
+    - grep
+    - postgresql
+    - python3
+    - tree
+- name: "Remove dependencies that are no longer required"
+  tags: linux,redhat,centos,yum,cache,remove
+  ansible.builtin.yum:
+    autoremove: true
+- name: Include - Node Exporter
+  tags: linux,redhat,centos,include,nodeexporter,setup
+  ansible.builtin.include_tasks: install-nodeexporter.yml
+- name: permit traffic in default zone on port 9100/tcp
+  ansible.posix.firewalld:
+    port: 9100/tcp
+    permanent: true
+    state: enabled
+- name: permit traffic in default zone on port 5432/tcp
+  ansible.posix.firewalld:
+    port: 5432/tcp
+    permanent: true
+    state: enabled
+- name: Include - Java JDK8
+  tags: linux,redhat,centos,include,jdk8,setup
+  ansible.builtin.include_tasks: install-jdk8.yml

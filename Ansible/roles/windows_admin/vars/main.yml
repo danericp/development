@@ -1,0 +1,14 @@
+---
+# vars file for windows-admin
+app_7zip: https://www.7-zip.org/a/7z2300-x64.msi
+app_choco_7zip: 7zip
+app_choco_cheatengine: cheatengine
+app_choco_cheatengine_version: 7.5
+app_choco_java: javaruntime
+app_choco_jdk8: jdk8
+app_choco_notepadplusplus: notepadplusplus
+app_choco_notepadplusplus_version: 8.5.3
+app_choco_prometheuswinexporter: prometheus-windows-exporter.install
+app_choco_prometheuswinexporter_version: 0.22.0
+app_choco_python39: python39
+app_choco_version: latest
