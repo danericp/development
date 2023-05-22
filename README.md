@@ -3,8 +3,9 @@
 | Technology | Room for Improvement |
 | :--- | :--- |
 | AWS | Emulated AWS components are not at 100%  due to free features |
-| Docker | Docker Network macvlan currently has a major limitation in Mac environment, hence not used and have to rely on virtual machines.<br>Currently using Localstack as free. Features are limited. |
+| Docker | Docker Network **macvlan** currently has a major limitation in Mac environment, hence not used<br>Currently using Localstack as free. Features are limited. |
 | Grafana | IaaC not yet implemented |
+| Jenkins | Pipeline scripts on-going |
 | VMWare | No free IaaC solutions found yet |
 
 # Project Infrastructure
