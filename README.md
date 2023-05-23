@@ -33,7 +33,7 @@
 
 Database [PostgreSQL](https://www.postgresql.org/download/)
 
-Diagrams [Draw.io](https://app.diagrams.net)
+Diagram [Draw.io](https://app.diagrams.net)
 
 Emulate AWS [Localstack](https://localstack.cloud)
 
