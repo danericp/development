@@ -10,7 +10,7 @@
 
 # Features
 
-| Platform | Added Features |
+| Platform | Features |
 | :--- | ---: |
 | CentOS Stream 9 | Ansible access<br>Database access<br>Jenkins agent compatible<br>Node Exporter installed<br>SFTP, SSH |
 | Ubuntu Server 22.03.4 | Ansible access<br>Database access<br>Jenkins agent compatible<br>Node Exporter installed<br>SFTP, SSH |
