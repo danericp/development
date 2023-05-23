@@ -14,7 +14,7 @@
 | :--- | ---: |
 | CentOS Stream 9 | Ansible access<br>Database access<br>Jenkins agent compatible<br>Node Exporter installed<br>SFTP, SSH Ready |
 | Grafana Alarm | One-time alarm if agent uptime reaches 1hr<br>Slack Notification |
-| Localstack | Cluster Reporting via AWS-CLI + Shell [Example](https://github.com/danericpelayo/development/blob/main/Localstack/cluster.json)<br>Cluster Scale up/down automation |
+| Localstack | Cluster Reporting via AWS-CLI + Shell [Example](https://github.com/danericpelayo/development/blob/main/Localstack/cluster.json)<br>Cluster Scale up/down automation via Docker-Compose + Terraform |
 | Prometheus | AlertManager (**on-going**)<br>Grafana Data Source  |
 | Ubuntu Server 22.03.4 | Ansible access<br>Database access<br>Jenkins agent compatible<br>Node Exporter installed<br>SFTP, SSH Ready |
 | Windows 11 (Activated :sunglasses:) | Ansible access + Chocolatey<br>SFTP, SSH (Powershell) Ready<br>WMI Exporter installed |
