@@ -39,6 +39,8 @@ Emulate AWS [Localstack](https://localstack.cloud)
 
 Open-source Dashboards [Grafana Dashboards](https://grafana.com/grafana/dashboards/)
 
+Parse JSON [JSONGrid](https://jsongrid.com)
+
 Virtual Machine Image [CentOS Stream](https://www.centos.org/centos-stream/)
 
 Virtual Machine Image [Ubuntu Server ARM](https://ubuntu.com/download/server/arm)
