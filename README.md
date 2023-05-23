@@ -8,7 +8,7 @@
 | Jenkins | Pipeline scripts on-going |
 | VMWare | No free IaaC solutions found yet |
 
-# Features [(Screenshots)](infrastructure.png)
+# Features [(Screenshots)](Screenshots/)
 
 | Platform | Features |
 | :--- | ---: |
