@@ -6,6 +6,7 @@
 | Docker | Docker **macvlan** network currently has a major limitation in Mac environment, hence not used.<br>Currently using Localstack as free. Features are limited. |
 | Grafana | IaaC not yet implemented. |
 | Jenkins | Pipeline scripts on-going |
+| Prometheus | No SMTP server available. AlertManager cannot be created |
 | VMWare | No free IaaC solutions found yet |
 
 # Features [(Screenshots)](Screenshots/)
@@ -15,7 +16,7 @@
 | CentOS Stream 9 | Ansible access<br>PostgreSQL access<br>Jenkins agent compatible<br>Node Exporter installed<br>SFTP, SSH Ready |
 | Grafana Alarm | One-time alarm if agent uptime reaches 1hr<br>Slack Notification |
 | Localstack | Cluster Reporting via AWS-CLI + Shell [Example](https://github.com/danericpelayo/development/blob/main/Localstack/cluster.json)<br>Cluster Scale up/down automation via Docker-Compose + Terraform |
-| Prometheus | AlertManager (**on-going**)<br>Grafana Data Source  |
+| Prometheus | Grafana Data Source  |
 | Ubuntu Server 22.03.4 | Ansible access<br>PostgreSQL access<br>Jenkins agent compatible<br>Node Exporter installed<br>SFTP, SSH Ready |
 | Windows 11 | Ansible access + Chocolatey<br>SFTP, SSH (Powershell) Ready<br>WMI Exporter installed |
 
