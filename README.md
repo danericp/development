@@ -13,8 +13,10 @@
 | Platform | Features |
 | :--- | ---: |
 | CentOS Stream 9 | Ansible access<br>Database access<br>Jenkins agent compatible<br>Node Exporter installed<br>SFTP, SSH Ready |
+| Grafana Alarm | One-time alarm if agent uptime reaches 1hr |
+| Features | AlertManager (on-going) |
 | Ubuntu Server 22.03.4 | Ansible access<br>Database access<br>Jenkins agent compatible<br>Node Exporter installed<br>SFTP, SSH Ready |
-| Ansible - Windows | Ansible access + Chocolatey<br>SFTP, SSH (Powershell) Ready<br>WMI Exporter installed |
+| Windows 11 | Ansible access + Chocolatey<br>SFTP, SSH (Powershell) Ready<br>WMI Exporter installed |
 
 # Project Infrastructure
 
