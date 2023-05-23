@@ -7,7 +7,5 @@
     "JSON_EC2_SecurityGroups":[{"ID":"sg-b0950e37f523ca13e","NAME":"default","IpPermissionsEgress":[{"PROTOCOL":"-1","RANGE":[{"CidrIp":"0.0.0.0/0"}]}],"Tag":[]},{"ID":"sg-57d9d214455ca7d50","NAME":"default","IpPermissionsEgress":[{"PROTOCOL":"-1","RANGE":[{"CidrIp":"0.0.0.0/0"}]}],"Tag":[]},{"ID":"sg-b5e87c2e886c18f13","NAME":"allow_ssh to terraform machine","IpPermissionsEgress":[{"PROTOCOL":"icmp","RANGE":[{"CidrIp":"0.0.0.0/0","Description":"IMCP allow ping"}]},{"PROTOCOL":"-1","RANGE":[{"CidrIp":"0.0.0.0/0"}]}],"Tag":["SecurityGroup_vpc-production","Production"]}],
     "JSON_EC2_Subnets":[{"ID":"subnet-0fc8678d","CIDR":"172.31.0.0/20","VPC":"vpc-6e50fe43","Tag":null},{"ID":"subnet-0807b5ea","CIDR":"172.31.16.0/20","VPC":"vpc-6e50fe43","Tag":null},{"ID":"subnet-94f44982","CIDR":"10.0.1.0/24","VPC":"vpc-6a20bc3f","Tag":["Production","subnet-public"]},{"ID":"subnet-1e290544","CIDR":"172.31.32.0/20","VPC":"vpc-6e50fe43","Tag":null},{"ID":"subnet-a9c8912f","CIDR":"172.31.48.0/20","VPC":"vpc-6e50fe43","Tag":null},{"ID":"subnet-f14ea1be","CIDR":"172.31.64.0/20","VPC":"vpc-6e50fe43","Tag":null},{"ID":"subnet-ccdca478","CIDR":"172.31.80.0/20","VPC":"vpc-6e50fe43","Tag":null}],
     "JSON_EC2_VirtualPrivateClouds":[{"ID":"vpc-6e50fe43","CIDR":"172.31.0.0/16","Tag":[]},{"ID":"vpc-6a20bc3f","CIDR":"10.0.0.0/16","Tag":["Production","vpc-production"]}],
-    "JSON_DOCKER_CTR":{ "Container": "=docker-centos7", "Image": "centos:7", "Status": "running", "IP": "172.17.0.2"},
-    "JSON_KUBERNETES_NODE":{},
-    "JSON_KUBERNETES_POD":{}
+    "JSON_DOCKER_CTR":{ "Container": "=docker-centos7", "Image": "centos:7", "Status": "running", "IP": "172.17.0.2"}
 }
