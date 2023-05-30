@@ -1,3 +1,4 @@
+# THIS CODE IS NOT YET COMPLETE
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
         list_builder=[]
