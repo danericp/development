@@ -3,12 +3,11 @@ class Solution:
         if numRows == 1:
             return s
         list_builder=[]
+        x, y = 0, 0
         bool_xadd=False
         for int_temp in range(numRows):
             [list_builder.append(a) for a in [['']*((len(s)//2)+1)]]
-        x, y = 0, 0
-        int_ctr=0
-        while int_ctr < len(s):
+        for int_ctr in range(0, len(s)):
             list_builder[x][y]=s[int_ctr]
             if bool_xadd == False:
                 x+=1
@@ -17,7 +16,6 @@ class Solution:
                 x-=1
                 y+=1
                 bool_xadd = False if x == 0 else True
-            int_ctr+=1
         return "".join(["".join(a) for a in list_builder])
 str1='PAYPALISHIRING'
 obj_Solution = Solution()
