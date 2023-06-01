@@ -6,7 +6,7 @@ class Solution:
         int_ctr=0
         bool_xadd=False
         while int_ctr < numRows:
-            list_builder.append((','*((len(s)//2))).split(','))
+            list_builder.append(['']*((len(s)//2)+1))
             int_ctr+=1
         x, y = 0, 0
         int_ctr=0
