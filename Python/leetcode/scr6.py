@@ -3,11 +3,9 @@ class Solution:
         if numRows == 1:
             return s
         list_builder=[]
-        int_ctr=0
         bool_xadd=False
-        while int_ctr < numRows:
-            list_builder.append(['']*((len(s)//2)+1))
-            int_ctr+=1
+        for int_temp in range(numRows):
+            [list_builder.append(a) for a in [['']*((len(s)//2)+1)]]
         x, y = 0, 0
         int_ctr=0
         while int_ctr < len(s):
@@ -20,7 +18,6 @@ class Solution:
                 y+=1
                 bool_xadd = False if x == 0 else True
             int_ctr+=1
-        # print(list_builder)
         return "".join(["".join(a) for a in list_builder])
 str1='PAYPALISHIRING'
 obj_Solution = Solution()
