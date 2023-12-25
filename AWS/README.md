@@ -1,4 +1,4 @@
-# AWS CLI Cheat Sheet
+# AWS Cheat Sheet
 
 A collection of useful AWS CLI references.
 
