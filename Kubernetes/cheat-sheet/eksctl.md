@@ -1,40 +1,67 @@
 # eksctl Cheat Sheet
 
-A collection of useful Kubernetes commands for managing clusters, pods, deployments, and more.
+A collection of useful eksctl commands for managing clusters, pods, deployments, and more.
 
 ## Table of Contents
 
-- [Basic Commands](#basic-commands)
-- [Pods](#pods)
-- [Deployments](#deployments)
-- [Services](#services)
-- [ConfigMaps](#configmaps)
-- [Secrets](#secrets)
+- [eksctl create](#eksctl-create)
+- [eksctl delete](#eksctl-delete)
+- [eksctl get](#eksctl-get)
+- [eksctl scale](#eksctl-scale)
+- [eksctl update](#eksctl-update)
 
 ---
 
-## Basic Commands
+## eksctl create
 
-### General Information
+### Create an EKS Cluster
+
+```bash
+eksctl create cluster --name getting-started-eks \
+--region ap-southeast-2 \
+--version 1.16 \
+--managed \
+--node-type t2.small \
+--nodes 1 \
+--ssh-access \
+--ssh-public-key=~./ssh/id_rsa.pub \
+--node-volume-size 200
+```
+
+```bash
+eksctl create cluster \
+--name my-cluster \
+--version 1.21 \
+--region us-west-2 \
+--nodegroup-name my-node-group \
+--node-type t3.medium \
+--nodes 3 \
+--managed
+```
+
+`eksctl create iamserviceaccount --name my-service-account --namespace default --cluster my-cluster --attach-policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess --approve`
+
+## eksctl delete
 
 | Command | Description |
 |-|-|
-| `kubectl cluster-info` | Get cluster information |
-| `kubectl get all -n <namespace>` | Get all resources in a namespace |
-| `kubectl get nodes` | Get nodes in the cluster |
+| `eksctl delete cluster --name my-cluster` | Delete an EKS cluster |
 
-## Pods
-
-### Get cluster information
+## eksctl get
 
 | Command | Description |
 |-|-|
-| `kubectl get pods` | List all pods in the cluster |
-| `kubectl describe pod <pod_name>` | Get detailed information about a specific pod |
-| `kubectl exec -it <pod_name> -- /bin/bash` | Exec into a pod |
+| `eksctl get cluster --name my-cluster` <br> `eksctl get nodegroup --cluster my-cluster` | Get information about an EKS component |
+
+## eksctl scale
 
 | Command | Description |
 |-|-|
-| `kubectl cluster-info` | |
-| `kubectl cluster-info dump` | |
+| `eksctl scale nodegroup --cluster my-cluster --name my-node-group --nodes 5` | Scale an EKS node group |
+
+## eksctl update
+
+| Command | Description |
+|-|-|
+| `eksctl update cluster --name my-cluster` | Update an EKS cluster |
 

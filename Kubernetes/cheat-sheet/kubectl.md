@@ -74,16 +74,21 @@ A collection of useful Kubernetes commands for managing clusters, pods, deployme
 | `kubectl apply -n example-app -f .\kubernetes\service\service.yaml` | |
 | `kubectl apply -n jenkins -f ./jenkins/amazon-eks/jenkins.pvc.yaml` | |
 
-### Describing a Component
+### Describing a Resource
 
 | Command | Description |
 |-|-|
+| `kubectl -n jenkins get pods` | |
+| `kubectl -n jenkins get pvc` | |
 | `kubectl describe deployment <Deployment>` | |
 | `kubectl describe pod <pod>` | |
 | `kubectl describe service <Service>` | |
 | `kubectl describe service helloworld-deployment` | |
-| `kubectl -n jenkins get pods` | |
-| `kubectl -n jenkins get pvc` | |
+
+### Listing Resources
+
+| Command | Description |
+|-|-|
 | `kubectl get cm` | |
 | `kubectl get configmaps` | |
 | `kubectl get configmaps example-config -o yaml` | |
@@ -107,7 +112,7 @@ A collection of useful Kubernetes commands for managing clusters, pods, deployme
 | `kubectl get services` | |
 | `kubectl get service hello-kubernetes` | |
 
-### Fetching Logs
+### Fetching Resource Logs
 
 | Command | Description |
 |-|-|
@@ -130,7 +135,7 @@ A collection of useful Kubernetes commands for managing clusters, pods, deployme
 
 | Command | Description |
 |-|-|
-| `kubectl delete < >` | |
+| `kubectl delete <Resource>` | |
 
 ### Rollout
 
