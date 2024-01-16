@@ -84,9 +84,9 @@ aws account put-contact-information --contact-information \
 
 | Command | Description |
 |-|-|
-| `aws rds describe-db-instances --db-instance-identifier jira-auto-prod-aurora-provioned-db-1` | |
-| `aws rds describe-db-instances --db-instance-identifier jira-auto-prod-aurora-provioned-db-1 --query 'DBInstances[*].Endpoint.Address' --output text` | |
-| `aws rds describe-db-instances --db-instance-identifier jira-auto-prod-aurora-provioned-db-1 --query 'DBInstances[*].[Endpoint.Address,Endpoint.HostedZoneId]' --output text` | |
+| `aws rds describe-db-instances --db-instance-identifier jira-aurora-db` | |
+| `aws rds describe-db-instances --db-instance-identifier jira-aurora-db --query 'DBInstances[*].Endpoint.Address' --output text` | |
+| `aws rds describe-db-instances --db-instance-identifier jira-aurora-db --query 'DBInstances[*].[Endpoint.Address,Endpoint.HostedZoneId]' --output text` | |
 
 ### For Powershell Reports
 
