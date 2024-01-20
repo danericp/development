@@ -80,6 +80,15 @@ aws account put-contact-information --contact-information \
 |-|-|
 | `aws iam get-account-summary` | |
 
+## Lambda
+
+| Command | Description |
+|-|-|
+| `aws --endpoint-url=http://localhost:4566 lambda create-function --function-name test_function --zip-file fileb://openai.zip --handler lanbda_function.lambda_handler --runtime python3.12 --role arn:aws:iam::000000000000:role/AWSLambda_CLI` | Create a Lambda function |
+| `aws lambda delete-function --function-name test_function` | Delete a Lambda function |
+| `aws lambda invoke --function-name test_function out --log-type Tail` | Invoke a Lambda function |
+| `aws lambda update-function-code --function-name test_function --zip-file fileb://test.zip` | Update a Lambda function |
+
 ## RDS - Relational Database Service
 
 | Command | Description |
