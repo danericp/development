@@ -21,6 +21,7 @@ A collection of useful AWS CLI commands.
 | Command | Description |
 |-|-|
 | `aws account get-contact-information` | Get - Account Contact Information |
+| `aws configure` | Setup AWS CLI credentials |
 
 ### Insert Account Contact Information
 
